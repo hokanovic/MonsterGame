@@ -15,6 +15,17 @@ public class Main  {
         terminal.enterPrivateMode();
         terminal.setCursorVisible(false);
 
+        int randx;
+        int randy;
+        Player player = new Player(15, 15, terminal, size);
+        GameCharacter[] monsters = new GameCharacter[4];
+        for (int i = 0; i < 4 ; i++) {
+            randx = (int) Math.floor(Math.random()*size.getColumns());
+            randy = (int) Math.floor(Math.random()*size.getRows());
+            System.out.println("randx and y are: "+randx+" ,"+randy);
+            monsters[i] = new MonsterOne(randx, randy, terminal, size);
+        }
+
         while(true){
 
             Key key;
@@ -22,29 +33,41 @@ public class Main  {
                 Thread.sleep(5);
                 key = terminal.readInput();
                 if(key != null){
-                    keyPress(key);
+                    player.moveCharacter(key.getKind().toString());
+                    for(GameCharacter m : monsters)
+                        m.moveCharacter(player);
+                    checkCollision(player, monsters);
                 }
             }
             while(key == null);
-            System.out.println(key.getCharacter()+ " " + key.getKind());
         }
 
     }
 
-    public static void keyPress(Key key){
-        switch(key.getKind()) {
-            case ArrowDown: {
-                System.out.println("you pressed up");
-                break;
+   public static void checkCollision(Player player, GameCharacter[] monsters) throws InterruptedException{
+
+        for(int i = 0; i < monsters.length; i++){
+            if(player.getPositionx() == monsters[i].getPositionx() && player.getPositiony() == monsters[i].getPositiony()){
+                String s = "GAME OVER !";
+                terminal.clearScreen();
+                lanternString(terminal, s);
+                Thread.sleep(5000);
+                System.exit(0);
             }
-            case ArrowUp:
-                break;
-            case ArrowLeft:
-                break;
-            case ArrowRight:
-                break;
-            default :
-                break;
         }
+
+
+
+   }
+
+    public static void lanternString(Terminal t, String s){
+
+        for(int i = 0; i < s.length(); i++){
+
+            t.moveCursor(i+44, 14);
+            t.putCharacter(s.charAt(i));
+
+        }
+
     }
 }
