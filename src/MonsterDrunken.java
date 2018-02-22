@@ -21,6 +21,7 @@ public class MonsterDrunken extends GameCharacter {
         this.positiony = positiony;
         this.terminal = terminal;
         this.terminalsize = size;
+        drawCharacter(positionx, positiony);
     }
 
     @Override
@@ -30,26 +31,44 @@ public class MonsterDrunken extends GameCharacter {
     }
 
     @Override
-    public void moveCharacter(Player player){
-        eraseCharacter(positionx, positiony);
-        if(player.getPositionx() + player.getPositiony() > this.positionx + this.positiony){
-            positionx = positiony+positionx ;
-            drawCharacter(positionx, positiony);
+    public void moveCharacter(Player player) {
+
+        if (player.getPositionx() > positionx) {
+            cumulativex += 0.33;
+            if (cumulativex > 1) {
+                eraseCharacter(positionx, positiony);
+                positionx++;
+                cumulativex = 0;
+                drawCharacter(positionx, positiony);
+            }
+        } else if (player.getPositionx() < positionx) {
+            cumulativex -= 0.33;
+            if (cumulativex < -1) {
+                eraseCharacter(positionx, positiony);
+                positionx--;
+                cumulativex = 0;
+                drawCharacter(positionx, positiony);
+            }
         }
-        else if(player.getPositionx() + player.getPositiony() < this.positionx + this.positiony){
-            positionx = positiony-positionx ;
-            drawCharacter(positionx, positiony);
-        }
-        else if(player.getPositionx() - player.getPositiony() < this.positionx + this.positiony){
-            positionx = positiony-positionx ;
-            drawCharacter(positionx, positiony);
-        }
-        else if(player.getPositionx() - player.getPositiony() > this.positionx + this.positiony){
-            positionx = positiony+positionx ;
-            drawCharacter(positionx, positiony);
-        }
+        if (player.getPositiony() > positiony) {
+            cumulativey += 0.33;
+            if (cumulativey > 1) {
+                eraseCharacter(positionx, positiony);
+                positiony++;
+                cumulativex = 0;
+                drawCharacter(positionx, positiony);
+            }
+        } else if (player.getPositiony() < positiony) {
+            cumulativey -= 0.33;
+            if (cumulativey < -1) {
+                eraseCharacter(positionx, positiony);
+                positiony--;
+                cumulativey = 0;
+                drawCharacter(positionx, positiony);
+            }
 
 
+        }
     }
 
 
