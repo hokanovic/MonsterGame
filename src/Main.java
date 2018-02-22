@@ -19,6 +19,8 @@ public class Main  {
 //        Thread.sleep(1000);
 //        terminal.clearScreen();
 
+
+
         int randx;
         int randy;
         int randy2;
