@@ -14,10 +14,6 @@ public class Main {
 
         terminal.enterPrivateMode();
         terminal.setCursorVisible(false);
-//        String start = "GAME OF THRONES";
-//        lanternString(terminal, start);
-//        Thread.sleep(1000);
-//        terminal.clearScreen();
 
         IntroScreen.drawIntro(terminal);
 
@@ -34,7 +30,7 @@ public class Main {
         int randy2;
         int randy3;
         Player player = new Player(size.getColumns() / 2, size.getRows() / 2, terminal, size);
-        GameCharacter[] monsters = new GameCharacter[10];
+        GameCharacter[] monsters = new GameCharacter[11];
         MonsterShy[] shies = new MonsterShy[6];
         for (int i = 0; i < 9; i += 2) {
             randy = (int) Math.floor(Math.random() * size.getRows());
@@ -43,6 +39,7 @@ public class Main {
             monsters[i + 1] = new MonsterStaggered(30, randy, terminal, size);
         }
         monsters[9] = new MonsterOne(0, 0, terminal, size);
+        monsters[10] = new MonsterOne(size.getRows(), size.getColumns(), terminal, size);
         for (int i = 0; i < 4; i += 2) {
             randx = (int) Math.floor(Math.random() * size.getColumns());
             randy3 = (int) Math.floor(Math.random() * size.getRows());
