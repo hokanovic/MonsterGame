@@ -5,6 +5,7 @@ public class Player extends GameCharacter {
 
     private int positionx;
     private int positiony;
+    private int steps;
     private Terminal terminal;
     private TerminalSize terminalsize;
 
@@ -19,6 +20,7 @@ public class Player extends GameCharacter {
         this.positiony = positiony;
         this.terminal = terminal;
         this.terminalsize = size;
+        this.steps = 0;
     }
 
     @Override
@@ -74,6 +76,7 @@ public class Player extends GameCharacter {
     public void drawCharacter(int positionx, int positiony){
         terminal.moveCursor(positionx, positiony);
         terminal.putCharacter('O');
+        steps++;
     }
 
     @Override
