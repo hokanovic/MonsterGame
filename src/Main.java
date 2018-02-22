@@ -30,7 +30,7 @@ public class Main {
         int randy2;
         int randy3;
         Player player = new Player(size.getColumns() / 2, size.getRows() / 2, terminal, size);
-        GameCharacter[] monsters = new GameCharacter[11];
+        GameCharacter[] monsters = new GameCharacter[12];
         MonsterShy[] shies = new MonsterShy[6];
         for (int i = 0; i < 9; i += 2) {
             randy = (int) Math.floor(Math.random() * size.getRows());
@@ -40,6 +40,7 @@ public class Main {
         }
         monsters[9] = new MonsterOne(0, 0, terminal, size);
         monsters[10] = new MonsterOne(size.getRows(), size.getColumns(), terminal, size);
+        monsters[11] = new MonsterOne(size.getRows(), 0, terminal, size);
         for (int i = 0; i < 4; i += 2) {
             randx = (int) Math.floor(Math.random() * size.getColumns());
             randy3 = (int) Math.floor(Math.random() * size.getRows());
