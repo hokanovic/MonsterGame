@@ -9,6 +9,8 @@ public class MonsterShyTargetSeeking extends MonsterShy {
         private float cumulativey;
         boolean upperleft;
         boolean lowerright;
+        boolean upperright;
+        boolean lowerleft;
         private Terminal terminal;
         private TerminalSize terminalsize;
 
@@ -27,6 +29,8 @@ public class MonsterShyTargetSeeking extends MonsterShy {
             this.cumulativey = 0;
             this.upperleft = false;
             this.lowerright = false;
+            this.lowerleft = false;
+            this.upperright = false;
             drawCharacter(positionx, positiony);
         }
 
@@ -42,24 +46,41 @@ public class MonsterShyTargetSeeking extends MonsterShy {
             eraseCharacter(positionx, positiony);
 
 
-            if(positionx < 1 && positiony < 1)
+            if(positionx < 2 && positiony < 2) {
                 this.upperleft = true;
-            else if(positionx > terminalsize.getColumns()-2 && positiony > terminalsize.getRows()-2)
+                this.lowerleft = false;
+            }
+            else if(positionx > terminalsize.getColumns()-2 && positiony > terminalsize.getRows()-2) {
                 this.lowerright = true;
-            if(this.upperleft)
+                this.upperleft = false;
+            }
+            else if(positionx > terminalsize.getColumns()-2 && positiony < 2) {
+                this.upperright = true;
+                this.lowerright = false;
+            }
+            else if(positionx < 2 && positiony > terminalsize.getRows()-2) {
+                this.lowerleft = true;
+                this.upperright = false;
+            }
 
-            if(positionx < terminalsize.getColumns() ) {
+            if(this.upperleft){
                 positionx++;
-            }
-            else if(positiony > 0) {
-                positionx--;
-            }
-            if(positiony < terminalsize.getRows()) {
                 positiony++;
             }
-            else if(positiony > 0 ) {
+            else if(this.lowerright){
                 positiony--;
             }
+            else if(this.upperright){
+                positionx--;
+                positiony++;
+            }
+            else if(this.lowerleft){
+                positiony--;
+            }
+            System.out.println("Upperright is "+upperright);
+            System.out.println("Lowerright is "+lowerright);
+            System.out.println("Lowerleft is "+lowerleft);
+            System.out.println("Upperleft is "+upperleft);
             drawCharacter(positionx, positiony);
         }
 
@@ -68,7 +89,7 @@ public class MonsterShyTargetSeeking extends MonsterShy {
 
         public void drawCharacter(int positionx, int positiony){
             terminal.moveCursor(positionx, positiony);
-            terminal.putCharacter('!');
+            terminal.putCharacter('&');
         }
 
         @Override

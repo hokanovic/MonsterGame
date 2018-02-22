@@ -30,7 +30,7 @@ public class Main  {
         int randy3;
         Player player = new Player(size.getColumns()/2, size.getRows()/2, terminal, size);
         GameCharacter[] monsters = new GameCharacter[10];
-        MonsterShy[] shies = new MonsterShy[4];
+        MonsterShy[] shies = new MonsterShy[6];
         for (int i = 0; i < 9 ; i+=2) {
             randy = (int) Math.floor(Math.random()*size.getRows());
             randy2 = (int) Math.floor(Math.random()*size.getRows());
@@ -38,12 +38,14 @@ public class Main  {
             monsters[i + 1] = new MonsterStaggered(30, randy, terminal, size);
         }
         monsters[9] = new MonsterOne(0, 0, terminal, size);
-        for (int i = 0; i < shies.length ; i+=2) {
+        for (int i = 0; i < 4 ; i+=2) {
             randx = (int) Math.floor(Math.random()*size.getColumns());
             randy3 = (int) Math.floor(Math.random()*size.getRows());
             shies[i] = new MonsterShy(randx, randy3, terminal, size);
             shies[i+1] = new MonsterShyDrunk(randy3, randx, terminal, size);
         }
+        shies[4] = new MonsterShyTargetSeeking(0, 0, terminal, size);
+        shies[5] = new MonsterShyTargetSeeking(size.getColumns(), size.getRows(), terminal, size);
 
         while(true){
 
