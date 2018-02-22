@@ -85,6 +85,7 @@ public class Main {
                 terminal.clearScreen();
                 lanternString(terminal, s);
 
+                Thread.sleep(2000);
 
                 Key key;
                 do {
