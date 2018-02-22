@@ -42,7 +42,7 @@ import com.googlecode.lanterna.terminal.TerminalSize;
                         this.cumulativex = 0;
                         drawCharacter(this.positionx, this.positiony);
                     }
-                } else if (player.getPositionx() < this.positionx && this.positionx < terminalsize.getColumns()) {
+                } else if (player.getPositionx() < this.positionx && this.positionx < terminalsize.getColumns()-1) {
                     this.cumulativex -= 0.5;
                     if (this.cumulativex < -1) {
                         eraseCharacter(this.positionx, this.positiony);
@@ -59,7 +59,7 @@ import com.googlecode.lanterna.terminal.TerminalSize;
                         this.cumulativex = 0;
                         drawCharacter(this.positionx, this.positiony);
                     }
-                } else if (player.getPositiony() < this.positiony  && this.positiony < terminalsize.getRows()) {
+                } else if (player.getPositiony() < this.positiony  && this.positiony < terminalsize.getRows()-1) {
                     this.cumulativey -= 0.5;
                     if (this.cumulativey < -1) {
                         eraseCharacter(this.positionx, this.positiony);

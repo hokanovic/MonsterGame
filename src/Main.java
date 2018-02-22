@@ -26,15 +26,15 @@ public class Main  {
         int randy2;
         int randy3;
         Player player = new Player(size.getColumns()/2, size.getRows()/2, terminal, size);
-        GameCharacter[] monsters = new GameCharacter[4];
+        GameCharacter[] monsters = new GameCharacter[10];
         MonsterShy[] shies = new MonsterShy[3];
-        for (int i = 0; i < monsters.length ; i+=2) {
+        for (int i = 0; i < 9 ; i+=2) {
             randy = (int) Math.floor(Math.random()*size.getRows());
             randy2 = (int) Math.floor(Math.random()*size.getRows());
             monsters[i] = new MonsterDrunken(0, randy2, terminal, size);
             monsters[i + 1] = new MonsterStaggered(30, randy, terminal, size);
-
         }
+        monsters[9] = new MonsterOne(0, 0, terminal, size);
         for (int i = 0; i < shies.length ; i++) {
             randx = (int) Math.floor(Math.random()*size.getColumns());
             randy3 = (int) Math.floor(Math.random()*size.getRows());
@@ -78,8 +78,9 @@ public class Main  {
         }
        for(int i = 0; i < shies.length; i++) {
            if(player.getPositionx() == shies[i].getPositionx() && player.getPositiony() == shies[i].getPositiony()){
-               System.out.println("You caught one");
-               shies[i].eraseCharacter(shies[i].getPositionx(), shies[i].getPositiony());
+               player.drawCharacter(shies[i].getPositionx(), shies[i].getPositiony());
+               shies[i].setPositionx(size.getColumns()*2);
+               shies[i].setPositiony(size.getRows() * 2);
                player.setCaught(1);
                if(player.getCaught() == shies.length)
                    winScreen();
@@ -101,8 +102,12 @@ public class Main  {
 
     }
 
-    public static void winScreen(){
-
+    public static void winScreen() throws InterruptedException{
+        String s = "WIN !";
+        terminal.clearScreen();
+        lanternString(terminal, s);
+        Thread.sleep(5000);
+        System.exit(0);
     }
 
 }
