@@ -4,7 +4,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class IntroScreen {
-    
+
     public static void drawIntro(Terminal terminal) throws InterruptedException {
         String textStr = "Game of H.E";
         String[][] strArr = {

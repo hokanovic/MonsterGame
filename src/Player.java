@@ -36,7 +36,7 @@ public class Player extends GameCharacter {
     }
 
     public void moveCharacter(String key){
-        //System.out.println("You pressed "+key);
+        System.out.println("You pressed " + key);
         switch(key){
             case "ArrowUp" : {
                 if(positiony > 0) {
