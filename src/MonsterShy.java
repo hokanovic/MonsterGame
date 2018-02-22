@@ -84,7 +84,7 @@ import com.googlecode.lanterna.terminal.TerminalSize;
 
         public void drawCharacter(int positionx, int positiony){
             terminal.moveCursor(positionx, positiony);
-            terminal.putCharacter('S');
+            terminal.putCharacter('\u2649');
         }
 
         @Override

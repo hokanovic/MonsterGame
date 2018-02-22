@@ -58,7 +58,7 @@ public class MonsterShyDrunk extends MonsterShy {
 
     public void drawCharacter(int positionx, int positiony){
         terminal.moveCursor(positionx, positiony);
-        terminal.putCharacter('!');
+        terminal.putCharacter('\u2649');
     }
 
     @Override

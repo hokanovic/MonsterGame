@@ -37,7 +37,7 @@ public class MonsterOne extends GameCharacter {
         if(this.cumulativex > 1.1)
             this.cumulativex = 0;
         else if(this.cumulativex <= 1.1)
-            this.cumulativex += 0.2;
+            this.cumulativex += 0.5;
         if(player.getPositionx() > positionx && this.cumulativex >= 1) {
             positionx++;
         }
@@ -60,7 +60,7 @@ public class MonsterOne extends GameCharacter {
 
     public void drawCharacter(int positionx, int positiony){
         terminal.moveCursor(positionx, positiony);
-        terminal.putCharacter('X');
+        terminal.putCharacter('\u26CF');
     }
 
     @Override

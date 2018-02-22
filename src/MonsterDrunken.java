@@ -76,7 +76,7 @@ public class MonsterDrunken extends GameCharacter {
 
     public void drawCharacter(int positionx, int positiony){
         terminal.moveCursor(positionx, positiony);
-        terminal.putCharacter('D');
+        terminal.putCharacter('\u26CF');
     }
 
     @Override

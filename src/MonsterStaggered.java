@@ -67,7 +67,7 @@ public class MonsterStaggered extends GameCharacter {
 
     public void drawCharacter(int positionx, int positiony){
         terminal.moveCursor(positionx, positiony);
-        terminal.putCharacter('T');
+        terminal.putCharacter('\u26CF');
     }
 
     @Override
