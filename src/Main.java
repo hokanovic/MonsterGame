@@ -15,6 +15,11 @@ public class Main  {
         terminal.enterPrivateMode();
         terminal.setCursorVisible(false);
 
+        String start = "START SCREEN";
+        lanternString(terminal, start);
+        Thread.sleep(5000);
+        terminal.clearScreen();
+
         int randx;
         int randy;
         Player player = new Player(15, 15, terminal, size);
