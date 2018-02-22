@@ -14,21 +14,21 @@ public class Main  {
 
         terminal.enterPrivateMode();
         terminal.setCursorVisible(false);
-
-        String start = "START SCREEN";
+        String start = "GAME OF THRONES";
         lanternString(terminal, start);
-        Thread.sleep(5000);
+        Thread.sleep(1000);
         terminal.clearScreen();
 
         int randx;
         int randy;
         Player player = new Player(15, 15, terminal, size);
         GameCharacter[] monsters = new GameCharacter[4];
-        for (int i = 0; i < 4 ; i++) {
+        for (int i = 0; i < 4 ; i+=2) {
             randx = (int) Math.floor(Math.random()*size.getColumns());
             randy = (int) Math.floor(Math.random()*size.getRows());
             System.out.println("randx and y are: "+randx+" ,"+randy);
             monsters[i] = new MonsterOne(randx, randy, terminal, size);
+            monsters[i+1] = new MonsterDrunken(randx, randy, terminal, size);
         }
 
         while(true){

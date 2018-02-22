@@ -1,20 +1,22 @@
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.TerminalSize;
 
-public class MonsterOne extends GameCharacter {
+public class MonsterDrunken extends GameCharacter {
 
     private int positionx;
     private int positiony;
+    private float cumulativex;
+    private float cumulativey;
     private Terminal terminal;
     private TerminalSize terminalsize;
 
 
-    public MonsterOne(){
+    public MonsterDrunken(){
         this.positionx = 0;
         this.positiony = 0;
     }
 
-    public MonsterOne(int positionx, int positiony, Terminal terminal, TerminalSize size){
+    public MonsterDrunken(int positionx, int positiony, Terminal terminal, TerminalSize size){
         this.positionx = positionx;
         this.positiony = positiony;
         this.terminal = terminal;
@@ -30,19 +32,22 @@ public class MonsterOne extends GameCharacter {
     @Override
     public void moveCharacter(Player player){
         eraseCharacter(positionx, positiony);
-        if(player.getPositionx() > positionx) {
-            positionx++;
+        if(player.getPositionx() + player.getPositiony() > this.positionx + this.positiony){
+            positionx = positiony+positionx ;
+            drawCharacter(positionx, positiony);
         }
-        else if(player.getPositionx() < positionx) {
-            positionx--;
+        else if(player.getPositionx() + player.getPositiony() < this.positionx + this.positiony){
+            positionx = positiony-positionx ;
+            drawCharacter(positionx, positiony);
         }
-        if(player.getPositiony() > positiony) {
-            positiony++;
+        else if(player.getPositionx() - player.getPositiony() < this.positionx + this.positiony){
+            positionx = positiony-positionx ;
+            drawCharacter(positionx, positiony);
         }
-        else if(player.getPositiony() < positiony) {
-            positiony--;
+        else if(player.getPositionx() - player.getPositiony() > this.positionx + this.positiony){
+            positionx = positiony+positionx ;
+            drawCharacter(positionx, positiony);
         }
-        drawCharacter(positionx, positiony);
 
 
     }
@@ -52,7 +57,7 @@ public class MonsterOne extends GameCharacter {
 
     public void drawCharacter(int positionx, int positiony){
         terminal.moveCursor(positionx, positiony);
-        terminal.putCharacter('X');
+        terminal.putCharacter('D');
     }
 
     @Override
