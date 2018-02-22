@@ -34,16 +34,20 @@ public class MonsterOne extends GameCharacter {
     @Override
     public void moveCharacter(Player player){
         eraseCharacter(positionx, positiony);
-        if(player.getPositionx() > positionx && this.cumulativex > 1) {
+        if(this.cumulativex > 1.1)
+            this.cumulativex = 0;
+        else if(this.cumulativex <= 1.1)
+            this.cumulativex += 0.2;
+        if(player.getPositionx() > positionx && this.cumulativex >= 1) {
             positionx++;
         }
-        else if(player.getPositionx() < positionx && this.cumulativex > 1) {
+        else if(player.getPositionx() < positionx && this.cumulativex >= 1) {
             positionx--;
         }
-        if(player.getPositiony() > positiony && this.cumulativex > 1) {
+        if(player.getPositiony() > positiony && this.cumulativex >= 1) {
             positiony++;
         }
-        else if(player.getPositiony() < positiony && this.cumulativex > 1) {
+        else if(player.getPositiony() < positiony && this.cumulativex >= 1) {
             positiony--;
         }
         drawCharacter(positionx, positiony);
