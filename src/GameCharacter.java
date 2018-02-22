@@ -5,6 +5,8 @@ public class GameCharacter {
 
     private int positionx;
     private int positiony;
+    private float cumulativex;
+    private float cumulativey;
     private Terminal terminal;
     private TerminalSize terminalsize;
 
@@ -38,5 +40,13 @@ public class GameCharacter {
 
     public void setPositiony(int positiony) {
         this.positiony = positiony;
+    }
+
+    public float getCumulativex() {
+        return cumulativex;
+    }
+
+    public void setCumulativex(float cumulativex) {
+        this.cumulativex = cumulativex;
     }
 }

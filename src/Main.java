@@ -21,7 +21,7 @@ public class Main  {
 //        Thread.sleep(1000);
 //        terminal.clearScreen();
 
-        IntroScreen.drawIntro(terminal);
+        //IntroScreen.drawIntro(terminal);
 
 
         int randx;
@@ -55,6 +55,7 @@ public class Main  {
                     player.moveCharacter(key.getKind().toString());
                     for (int i = 0; i < monsters.length; i++) {
                         monsters[i].moveCharacter(player);
+                        System.out.println("Cumulative x of monsterOne is: "+monsters[9].getCumulativex());
                     }
                     for (int i = 0; i < shies.length ; i++) {
                         shies[i].moveCharacter(player);

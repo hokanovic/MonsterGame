@@ -5,6 +5,8 @@ public class Player extends GameCharacter {
 
     private int positionx;
     private int positiony;
+    private float cumulativex;
+    private float cumulativey;
     private int steps;
     private int caught;
 
@@ -116,5 +118,13 @@ public class Player extends GameCharacter {
 
     public void setCaught(int caught) {
         this.caught += caught;
+    }
+
+    @Override
+    public float getCumulativex() {
+        return cumulativex;
+    }
+    public void setCumulativex(float cumulativex) {
+        this.cumulativex = cumulativex;
     }
 }

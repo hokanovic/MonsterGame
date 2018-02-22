@@ -109,6 +109,12 @@ import com.googlecode.lanterna.terminal.TerminalSize;
         public void setPositiony(int positiony) {
             this.positiony = positiony;
         }
+        public void setCumulativex(float cumulativex) {
+            this.cumulativex = cumulativex;
+        }
+        public float getCumulativex() {
+            return cumulativex;
+        }
     }
 
 

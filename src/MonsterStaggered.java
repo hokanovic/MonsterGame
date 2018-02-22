@@ -96,6 +96,12 @@ public class MonsterStaggered extends GameCharacter {
     public void setPositiony(int positiony) {
         this.positiony = positiony;
     }
+    public float getCumulativex() {
+        return cumulativex;
+    }
+    public void setCumulativex(float cumulativex) {
+        this.cumulativex = cumulativex;
+    }
 }
 
 

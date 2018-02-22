@@ -34,7 +34,6 @@ public class MonsterOne extends GameCharacter {
     @Override
     public void moveCharacter(Player player){
         eraseCharacter(positionx, positiony);
-        this.cumulativex += 0.5;
         if(player.getPositionx() > positionx && this.cumulativex > 1) {
             positionx++;
         }
@@ -85,6 +84,13 @@ public class MonsterOne extends GameCharacter {
     @Override
     public void setPositiony(int positiony) {
         this.positiony = positiony;
+    }
+
+    public float getCumulativex() {
+        return cumulativex;
+    }
+    public void setCumulativex(float cumulativex) {
+        this.cumulativex = cumulativex;
     }
 }
 
