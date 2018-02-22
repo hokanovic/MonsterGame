@@ -12,6 +12,8 @@ public class Main  {
 
     public static void main(String[] args) throws InterruptedException {
 
+
+
         terminal.enterPrivateMode();
         terminal.setCursorVisible(false);
 //        String start = "GAME OF THRONES";
@@ -19,6 +21,7 @@ public class Main  {
 //        Thread.sleep(1000);
 //        terminal.clearScreen();
 
+        IntroScreen.drawIntro(terminal);
 
 
         int randx;
@@ -102,7 +105,7 @@ public class Main  {
     }
 
     public static void winScreen(){
-        
+
     }
 
 }

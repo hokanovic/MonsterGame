@@ -30,42 +30,49 @@ public class IntroScreen {
 
 
 
-    public static void drawIntro(Terminal terminal) {
+    public static void drawIntro(Terminal terminal) throws InterruptedException {
         System.out.println("Terminal " + terminal);
         System.out.println("drawIntro");
 
-            String textStr = "Game of T";
+            String textStr = "Game";
             String[][] strArr = {
-                    {"",    "T",      "T",        "TG",    "TG",    "TG",     "G",       "T"},
-                    {"T",    "",       "G",       "T",    "",    "TG",       "GT",       "GT"},
-                    {"",    "G",      "T",        "T",    "",    "",           "GT",     "GT"},
-                    {"G",   "Gm",     "T",        "aTef",    "amfe",    "ae",       "e",     "m"},
-                    {"Gm",   "Gm",    "amTef",       "amTfo",    "amfo",    "amfe",    "aem",    "em"},
-                    {"Gm",   "Geam",    "eoTf",        "mT",    "mo",    "ao",       "aem",    "m"},
-                    {"Gm",   "Gemf",       "eTof",    "amTf",    "amf",    "Gaeo",    "Gaom",    "Gm"},
-                    {"Gm",   "Gemf",       "aeTof",    "mTe",    "mee",    "ao",        "Goam",    "Gm"},
-                    {"Gm",   "Gema",        "afTe",    "meTfo",    "mo",    "ao",    "Goam",    "GmT"},
-                    {"m",    "Gema",       "GefTa",    "GeTfm",    "Tm",    "ao",    "aTGm",    "ame"},
-                    {"m",    "m",        "Gea",    "GaeTm",    "GaeTm",    "GaTe",    "aem",    "m"}
+                    {"",    "T",           "Th",        "TG",         "TG",          "TG",            "G",            "T"},
+                    {"T",    "h",        "Gh",       "T",             "",               "TG",       "GT",            "GT"},
+                    {"h",    "Gh",         "hT",        "T",         "",               "",       "GT",             "GT"},
+                    {"G",   "Gmh",          "TOrh",        "aOTef",        "aOmfe",    "aerh",            "eh",           "m"},
+                    {"Gm",   "GhrOm",         "amhTref",       "amTOfo",    "amrOhfo",    "aOrmhfe",    "aheOrm",         "emh"},
+                    {"GmOr",   "GehOram",       "eorhTf",        "mTrh",    "mo",       "arOo",         "aehOrm",           "mh"},
+                    {"GOm",   "GehrOmf",       "eThrof",    "amTf",    "amf",        "GaeOo",         "GahoOm",         "Ghm"},
+                    {"GOm",   "GehmOrf",       "aeTrhof",    "mTe",    "mee",        "aoO",             "GoOham",         "Ghm"},
+                    {"GOm",   "GehrOma",        "ahrfPTe",    "meTfo",    "mo",        "aOo",          "Goahm",           "GmhT"},
+                    {"m",    "GehrOma",       "GefrhOTa",    "GeTOrfm",    "Tm",       "aOo",           "aThGm",           "ahme"},
+                    {"m",    "mrh",           "GerOha",    "GaeTOm",    "GaeOTm",      "GaTe",    "ahem",                 "mh"}
             };
 //        IntroScreen.drawIntro(terminal);
-
+int radjusterare = 10;
+int kolumnjusterare = 15;
         for (int i = 0; i < 11; i++) {
             int kol = 0;
             for (int j = 0; j < textStr.length(); j++,kol += 9) {
                 for (int k = 0; k < 8; k++) {
                     if (strArr[i][k].indexOf(textStr.charAt(j)) != -1) {
-                        terminal.moveCursor((kol+k),i);
-                        terminal.putCharacter('#');
-                    }
-                    else {
-                        terminal.moveCursor((kol+k),i);
+                        terminal.moveCursor((kol+k)+kolumnjusterare,i+radjusterare);
                         terminal.putCharacter(' ');
+                        terminal.applyBackgroundColor(3);
+//                        terminal.applyForegroundColor(3);
+
                     }
                 }
             }
         }
 
+
+
+        Thread.sleep(3000);
+        terminal.clearScreen();
+
+        terminal.applyBackgroundColor(0);
+//                        terminal.applyForegroundColor(3);
 
 
 
