@@ -61,6 +61,7 @@ public class Main {
                         newGame();
                     }
                     player.moveCharacter(key.getKind().toString());
+
                     for (int i = 0; i < monsters.length; i++) {
                         monsters[i].moveCharacter(player);
                     }
@@ -100,7 +101,6 @@ public class Main {
 
                     }
                 } while (key == null);
-
 
             }
         }

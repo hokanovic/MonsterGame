@@ -89,7 +89,8 @@ public class MonsterShyTargetSeeking extends MonsterShy {
             terminal.moveCursor(positionx, positiony);
             terminal.applyForegroundColor(2);
 
-            terminal.putCharacter('\u2649');
+//            terminal.putCharacter('\u2649');
+            terminal.putCharacter('S');
             terminal.applyForegroundColor(7);
         }
 
