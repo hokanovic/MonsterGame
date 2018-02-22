@@ -58,7 +58,6 @@ public class Main {
                 key = terminal.readInput();
                 if (key != null) {
                     if (key.getKind().toString().equals("F2")) {
-                        System.out.println(" ######### ######### ######### Tryckt på 2");
                         newGame();
                     }
                     player.moveCharacter(key.getKind().toString());
