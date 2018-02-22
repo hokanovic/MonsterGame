@@ -95,7 +95,7 @@ public class Main {
                         if (key.getKind().toString().equals("F2")) {
                             newGame();
                             break;
-                        } else {
+                        } else if (key.getCharacter() == 'q') {
                             System.exit(0);
                         }
 
