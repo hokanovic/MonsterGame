@@ -6,6 +6,9 @@ public class Player extends GameCharacter {
     private int positionx;
     private int positiony;
     private int steps;
+    private int caught;
+
+
     private Terminal terminal;
     private TerminalSize terminalsize;
 
@@ -21,6 +24,7 @@ public class Player extends GameCharacter {
         this.terminal = terminal;
         this.terminalsize = size;
         this.steps = 0;
+        drawCharacter(positionx, positiony);
     }
 
     @Override
@@ -30,10 +34,10 @@ public class Player extends GameCharacter {
     }
 
     public void moveCharacter(String key){
-        System.out.println("You pressed "+key);
+        //System.out.println("You pressed "+key);
         switch(key){
             case "ArrowUp" : {
-                if(positiony-1 > 0) {
+                if(positiony > 0) {
                     this.eraseCharacter(positionx, positiony);
                     positiony--;
                     this.drawCharacter(positionx, positiony);
@@ -104,5 +108,13 @@ public class Player extends GameCharacter {
     @Override
     public void setPositiony(int positiony) {
         this.positiony = positiony;
+    }
+
+    public int getCaught() {
+        return caught;
+    }
+
+    public void setCaught(int caught) {
+        this.caught += caught;
     }
 }

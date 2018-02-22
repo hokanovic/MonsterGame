@@ -14,21 +14,30 @@ public class Main  {
 
         terminal.enterPrivateMode();
         terminal.setCursorVisible(false);
-        String start = "GAME OF THRONES";
-        lanternString(terminal, start);
-        Thread.sleep(1000);
-        terminal.clearScreen();
+//        String start = "GAME OF THRONES";
+//        lanternString(terminal, start);
+//        Thread.sleep(1000);
+//        terminal.clearScreen();
 
         int randx;
         int randy;
-        Player player = new Player(15, 15, terminal, size);
+        int randy2;
+        int randy3;
+        Player player = new Player(size.getColumns()/2, size.getRows()/2, terminal, size);
         GameCharacter[] monsters = new GameCharacter[4];
-        for (int i = 0; i < 4 ; i+=2) {
-            randx = (int) Math.floor(Math.random()*size.getColumns());
+        MonsterShy[] shies = new MonsterShy[3];
+        for (int i = 0; i < monsters.length ; i+=2) {
             randy = (int) Math.floor(Math.random()*size.getRows());
-            System.out.println("randx and y are: "+randx+" ,"+randy);
-            monsters[i] = new MonsterOne(randx, randy, terminal, size);
-            monsters[i+1] = new MonsterDrunken(randx, randy, terminal, size);
+            randy2 = (int) Math.floor(Math.random()*size.getRows());
+            monsters[i] = new MonsterDrunken(0, randy2, terminal, size);
+            monsters[i + 1] = new MonsterStaggered(30, randy, terminal, size);
+
+        }
+        for (int i = 0; i < shies.length ; i++) {
+            randx = (int) Math.floor(Math.random()*size.getColumns());
+            randy3 = (int) Math.floor(Math.random()*size.getRows());
+            shies[i] = new MonsterShy(randx, randy3, terminal, size);
+
         }
 
         while(true){
@@ -39,9 +48,14 @@ public class Main  {
                 key = terminal.readInput();
                 if(key != null){
                     player.moveCharacter(key.getKind().toString());
-                    for(GameCharacter m : monsters)
-                        m.moveCharacter(player);
-                    checkCollision(player, monsters);
+                    for (int i = 0; i < monsters.length; i++) {
+                        monsters[i].moveCharacter(player);
+                    }
+                    for (int i = 0; i < shies.length ; i++) {
+                        shies[i].moveCharacter(player);
+
+                    }
+                    checkCollision(player, monsters, shies);
                 }
             }
             while(key == null);
@@ -49,7 +63,7 @@ public class Main  {
 
     }
 
-   public static void checkCollision(Player player, GameCharacter[] monsters) throws InterruptedException{
+   public static void checkCollision(Player player, GameCharacter[] monsters, MonsterShy[] shies) throws InterruptedException{
 
         for(int i = 0; i < monsters.length; i++){
             if(player.getPositionx() == monsters[i].getPositionx() && player.getPositiony() == monsters[i].getPositiony()){
@@ -60,7 +74,16 @@ public class Main  {
                 System.exit(0);
             }
         }
+       for(int i = 0; i < shies.length; i++) {
+           if(player.getPositionx() == shies[i].getPositionx() && player.getPositiony() == shies[i].getPositiony()){
+               System.out.println("You caught one");
+               shies[i].eraseCharacter(shies[i].getPositionx(), shies[i].getPositiony());
+               player.setCaught(1);
+               if(player.getCaught() == shies.length)
+                   winScreen();
 
+           }
+       }
 
 
    }
@@ -74,6 +97,10 @@ public class Main  {
 
         }
 
+    }
+
+    public static void winScreen(){
+        
     }
 
 }
