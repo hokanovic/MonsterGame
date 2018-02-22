@@ -81,7 +81,11 @@ public class Player extends GameCharacter {
 
     public void drawCharacter(int positionx, int positiony){
         terminal.moveCursor(positionx, positiony);
+        terminal.applyForegroundColor(6);
+//        terminal.applyBackgroundColor(0);
+//        terminal.putCharacter('\u2588');
         terminal.putCharacter('O');
+        terminal.applyForegroundColor(7);
         steps++;
     }
 

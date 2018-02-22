@@ -60,7 +60,10 @@ public class MonsterOne extends GameCharacter {
 
     public void drawCharacter(int positionx, int positiony){
         terminal.moveCursor(positionx, positiony);
+        terminal.applyForegroundColor(3);
         terminal.putCharacter('\u26CF');
+
+        terminal.applyForegroundColor(7);
     }
 
     @Override

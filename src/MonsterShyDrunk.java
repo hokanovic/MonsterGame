@@ -58,7 +58,10 @@ public class MonsterShyDrunk extends MonsterShy {
 
     public void drawCharacter(int positionx, int positiony){
         terminal.moveCursor(positionx, positiony);
+        terminal.applyForegroundColor(2);
+
         terminal.putCharacter('\u2649');
+        terminal.applyForegroundColor(7);
     }
 
     @Override

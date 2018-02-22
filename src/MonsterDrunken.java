@@ -76,7 +76,10 @@ public class MonsterDrunken extends GameCharacter {
 
     public void drawCharacter(int positionx, int positiony){
         terminal.moveCursor(positionx, positiony);
+        terminal.applyForegroundColor(1);
         terminal.putCharacter('\u26CF');
+
+        terminal.applyForegroundColor(7);
     }
 
     @Override
