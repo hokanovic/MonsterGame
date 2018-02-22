@@ -29,8 +29,11 @@ public class IntroScreen {
                 for (int k = 0; k < 8; k++)
                     if (strArr[i][k].indexOf(textStr.charAt(j)) != -1) {
                         terminal.moveCursor((kol + k) + kolumnjusterare, i + radjusterare);
-                        terminal.applyBackgroundColor(3);
-                        terminal.applyForegroundColor(3);
+                        double color =  Math.random()*100+150;
+                        //terminal.applyBackgroundColor(color, color, color);
+                        terminal.applyForegroundColor(7, (int) color,(int) color);
+                        terminal.applyBackgroundColor(0);
+
                         terminal.putCharacter('\u2588');
 
                     }
