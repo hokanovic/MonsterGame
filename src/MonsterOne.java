@@ -5,6 +5,8 @@ public class MonsterOne extends GameCharacter {
 
     private int positionx;
     private int positiony;
+    private float cumulativex;
+    private float cumulativey;
     private Terminal terminal;
     private TerminalSize terminalsize;
 
@@ -19,6 +21,7 @@ public class MonsterOne extends GameCharacter {
         this.positiony = positiony;
         this.terminal = terminal;
         this.terminalsize = size;
+        this.cumulativex = 0.0f;
         drawCharacter(positionx, positiony);
     }
 
@@ -31,16 +34,17 @@ public class MonsterOne extends GameCharacter {
     @Override
     public void moveCharacter(Player player){
         eraseCharacter(positionx, positiony);
-        if(player.getPositionx() > positionx) {
+        this.cumulativex += 0.5;
+        if(player.getPositionx() > positionx && this.cumulativex > 1) {
             positionx++;
         }
-        else if(player.getPositionx() < positionx) {
+        else if(player.getPositionx() < positionx && this.cumulativex > 1) {
             positionx--;
         }
-        if(player.getPositiony() > positiony) {
+        if(player.getPositiony() > positiony && this.cumulativex > 1) {
             positiony++;
         }
-        else if(player.getPositiony() < positiony) {
+        else if(player.getPositiony() < positiony && this.cumulativex > 1) {
             positiony--;
         }
         drawCharacter(positionx, positiony);

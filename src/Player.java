@@ -45,7 +45,7 @@ public class Player extends GameCharacter {
                 break;
             }
             case "ArrowDown" : {
-                if(positiony+1 < terminalsize.getRows()) {
+                if(positiony < terminalsize.getRows()-1) {
                     this.eraseCharacter(positionx, positiony);
                     positiony++;
                     this.drawCharacter(positionx, positiony);
@@ -53,7 +53,7 @@ public class Player extends GameCharacter {
                 break;
             }
             case "ArrowLeft" : {
-                if(positionx-1 > 0) {
+                if(positionx > 0) {
                     this.eraseCharacter(positionx, positiony);
                     positionx--;
                     this.drawCharacter(positionx, positiony);
@@ -61,7 +61,7 @@ public class Player extends GameCharacter {
                 break;
             }
             case "ArrowRight" : {
-                if(positionx+1 < terminalsize.getColumns()) {
+                if(positionx < terminalsize.getColumns()-1) {
                     this.eraseCharacter(positionx, positiony);
                     positionx++;
                     this.drawCharacter(positionx, positiony);
