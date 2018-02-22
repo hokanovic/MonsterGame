@@ -30,7 +30,7 @@ public class Main  {
         int randy3;
         Player player = new Player(size.getColumns()/2, size.getRows()/2, terminal, size);
         GameCharacter[] monsters = new GameCharacter[10];
-        MonsterShy[] shies = new MonsterShy[3];
+        MonsterShy[] shies = new MonsterShy[4];
         for (int i = 0; i < 9 ; i+=2) {
             randy = (int) Math.floor(Math.random()*size.getRows());
             randy2 = (int) Math.floor(Math.random()*size.getRows());
@@ -38,11 +38,11 @@ public class Main  {
             monsters[i + 1] = new MonsterStaggered(30, randy, terminal, size);
         }
         monsters[9] = new MonsterOne(0, 0, terminal, size);
-        for (int i = 0; i < shies.length ; i++) {
+        for (int i = 0; i < shies.length ; i+=2) {
             randx = (int) Math.floor(Math.random()*size.getColumns());
             randy3 = (int) Math.floor(Math.random()*size.getRows());
             shies[i] = new MonsterShy(randx, randy3, terminal, size);
-
+            shies[i+1] = new MonsterShyDrunk(randy3, randx, terminal, size);
         }
 
         while(true){
@@ -55,10 +55,10 @@ public class Main  {
                     player.moveCharacter(key.getKind().toString());
                     for (int i = 0; i < monsters.length; i++) {
                         monsters[i].moveCharacter(player);
-                        System.out.println("Cumulative x of monsterOne is: "+monsters[9].getCumulativex());
                     }
-                    for (int i = 0; i < shies.length ; i++) {
+                    for (int i = 0; i < shies.length ; i+=2) {
                         shies[i].moveCharacter(player);
+                        shies[i+1].moveCharacter(monsters[i]);
 
                     }
                     checkCollision(player, monsters, shies);

@@ -32,6 +32,10 @@ import com.googlecode.lanterna.terminal.TerminalSize;
 
         }
 
+        public void moveCharacter(GameCharacter drunk){
+
+        }
+
         public void moveCharacter(Player player) {
             if (player.getPositionx() - this.positionx < 5 || this.positionx - player.getPositionx() < 5 || player.getPositiony() - this.positiony < 5 || this.positiony - player.getPositiony() < 5) {
                 if (player.getPositionx() > this.positionx && this.positionx > 0) {
