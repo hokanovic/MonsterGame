@@ -13,6 +13,20 @@ public class GameCharacter {
     protected int steps;
     protected int caught;
 
+
+    public GameCharacter(){
+
+    }
+
+    public GameCharacter(int positionx, int positiony, Terminal terminal, TerminalSize size){
+        this.positionx = positionx;
+        this.positiony = positiony;
+        this.terminal = terminal;
+        this.terminalsize = size;
+        this.steps = 0;
+        drawCharacter(positionx, positiony);
+    }
+
     public void moveCharacter(){
 
     }

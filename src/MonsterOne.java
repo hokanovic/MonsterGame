@@ -11,12 +11,7 @@ public class MonsterOne extends GameCharacter {
     }
 
     public MonsterOne(int positionx, int positiony, Terminal terminal, TerminalSize size){
-        this.positionx = positionx;
-        this.positiony = positiony;
-        this.terminal = terminal;
-        this.terminalsize = size;
-        this.cumulativex = 0.0f;
-        drawCharacter(positionx, positiony);
+        super(positionx, positiony, terminal, size);
     }
 
     @Override

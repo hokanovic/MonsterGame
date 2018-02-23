@@ -15,8 +15,10 @@ public class Main {
         terminal.enterPrivateMode();
         terminal.setCursorVisible(false);
 
-        startScreen();
+
         IntroScreen.drawIntro(terminal);
+
+        startScreen();
 
         newGame();
 
@@ -83,26 +85,8 @@ public class Main {
     public static void checkCollision(Player player, GameCharacter[] monsters, MonsterShy[] shies) throws InterruptedException {
         for (int i = 0; i < monsters.length; i++) {
             if (player.getPositionx() == monsters[i].getPositionx() && player.getPositiony() == monsters[i].getPositiony()) {
-                String s = "GAME OVER!     press F2 for new game";
-                terminal.clearScreen();
-                lanternString(terminal, s);
+                gameOverScreen();
 
-                Thread.sleep(2000);
-
-                Key key;
-                do {
-                    Thread.sleep(5);
-                    key = terminal.readInput();
-                    if (key != null) {
-                        if (key.getKind().toString().equals("F2")) {
-                            newGame();
-                            break;
-                        } else if (key.getCharacter() == 'q') {
-                            System.exit(0);
-                        }
-
-                    }
-                } while (key == null);
 
             }
         }
@@ -127,6 +111,29 @@ public class Main {
 
         }
 
+    }
+
+    public static void gameOverScreen() throws InterruptedException{
+        String s = "GAME OVER!     press F2 for new game";
+        terminal.clearScreen();
+        lanternString(terminal, s);
+
+        Thread.sleep(2000);
+
+        Key key;
+        do {
+            Thread.sleep(5);
+            key = terminal.readInput();
+            if (key != null) {
+                if (key.getKind().toString().equals("F2")) {
+                    newGame();
+                    break;
+                } else if (key.getCharacter() == 'q') {
+                    System.exit(0);
+                }
+
+            }
+        } while (key == null);
     }
 
     public static void winScreen() throws InterruptedException {

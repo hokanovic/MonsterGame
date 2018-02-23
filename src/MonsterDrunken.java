@@ -11,11 +11,7 @@ public class MonsterDrunken extends GameCharacter {
     }
 
     public MonsterDrunken(int positionx, int positiony, Terminal terminal, TerminalSize size){
-        this.positionx = positionx;
-        this.positiony = positiony;
-        this.terminal = terminal;
-        this.terminalsize = size;
-        drawCharacter(positionx, positiony);
+        super(positionx, positiony, terminal, size);
     }
 
     @Override

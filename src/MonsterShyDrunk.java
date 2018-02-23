@@ -11,13 +11,7 @@ public class MonsterShyDrunk extends MonsterShy {
     }
 
     public MonsterShyDrunk(int positionx, int positiony, Terminal terminal, TerminalSize size){
-        this.positionx = positionx;
-        this.positiony = positiony;
-        this.terminal = terminal;
-        this.terminalsize = size;
-        this.cumulativex = 0;
-        this.cumulativey = 0;
-        drawCharacter(positionx, positiony);
+        super(positionx, positiony, terminal, size);
     }
 
     @Override
