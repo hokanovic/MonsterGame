@@ -15,6 +15,7 @@ public class Main {
         terminal.enterPrivateMode();
         terminal.setCursorVisible(false);
 
+        startScreen();
         IntroScreen.drawIntro(terminal);
 
         newGame();
@@ -150,4 +151,10 @@ public class Main {
 
     }
 
+    public static void startScreen() throws InterruptedException {
+        String s = "CATCH ALL THE SHEEP AND AVOID THE MINERS";
+        lanternString(terminal, s);
+        Thread.sleep(3000);
+        terminal.clearScreen();
+    }
 }
