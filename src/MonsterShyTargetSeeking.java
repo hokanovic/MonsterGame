@@ -3,16 +3,10 @@ import com.googlecode.lanterna.terminal.TerminalSize;
 
 public class MonsterShyTargetSeeking extends MonsterShy {
 
-        private int positionx;
-        private int positiony;
-        private float cumulativex;
-        private float cumulativey;
         boolean upperleft;
         boolean lowerright;
         boolean upperright;
         boolean lowerleft;
-        private Terminal terminal;
-        private TerminalSize terminalsize;
 
 
         public MonsterShyTargetSeeking(){

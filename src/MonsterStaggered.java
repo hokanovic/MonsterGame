@@ -3,13 +3,6 @@ import com.googlecode.lanterna.terminal.TerminalSize;
 
 public class MonsterStaggered extends GameCharacter {
 
-    private int positionx;
-    private int positiony;
-    private float cumulativex;
-    private float cumulativey;
-    private Terminal terminal;
-    private TerminalSize terminalsize;
-
 
     public MonsterStaggered(){
         this.positionx = 0;

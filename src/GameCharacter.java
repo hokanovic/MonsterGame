@@ -3,12 +3,15 @@ import com.googlecode.lanterna.terminal.TerminalSize;
 
 public class GameCharacter {
 
-    private int positionx;
-    private int positiony;
-    private float cumulativex;
-    private float cumulativey;
-    private Terminal terminal;
-    private TerminalSize terminalsize;
+
+    protected int positionx;
+    protected int positiony;
+    protected float cumulativex;
+    protected float cumulativey;
+    protected Terminal terminal;
+    protected TerminalSize terminalsize;
+    protected int steps;
+    protected int caught;
 
     public void moveCharacter(){
 

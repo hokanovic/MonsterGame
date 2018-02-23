@@ -3,16 +3,6 @@ import com.googlecode.lanterna.terminal.TerminalSize;
 
 public class Player extends GameCharacter {
 
-    private int positionx;
-    private int positiony;
-    private float cumulativex;
-    private float cumulativey;
-    private int steps;
-    private int caught;
-
-
-    private Terminal terminal;
-    private TerminalSize terminalsize;
 
 
     public Player(){
