@@ -4,10 +4,27 @@ import com.googlecode.lanterna.terminal.TerminalSize;
 public class MonsterShyDrunk extends MonsterShy {
 
 
+    private int positionx;
+    private int positiony;
+    private float cumulativex;
+    private float cumulativey;
+    private Terminal terminal;
+    private TerminalSize terminalsize;
 
+
+    public MonsterShyDrunk(){
+        this.positionx = 0;
+        this.positiony = 0;
+    }
 
     public MonsterShyDrunk(int positionx, int positiony, Terminal terminal, TerminalSize size){
-        super(positionx, positiony, terminal, size);
+        this.positionx = positionx;
+        this.positiony = positiony;
+        this.terminal = terminal;
+        this.terminalsize = size;
+        this.cumulativex = 0;
+        this.cumulativey = 0;
+        drawCharacter(positionx, positiony);
     }
 
     @Override

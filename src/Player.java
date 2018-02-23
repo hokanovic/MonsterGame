@@ -3,11 +3,30 @@ import com.googlecode.lanterna.terminal.TerminalSize;
 
 public class Player extends GameCharacter {
 
+    private int positionx;
+    private int positiony;
+    private float cumulativex;
+    private float cumulativey;
+    private int steps;
+    private int caught;
 
 
+    private Terminal terminal;
+    private TerminalSize terminalsize;
+
+
+    public Player(){
+        this.positionx = 0;
+        this.positiony = 0;
+    }
 
     public Player(int positionx, int positiony, Terminal terminal, TerminalSize size){
-        super(positionx, positiony, terminal, size);
+        this.positionx = positionx;
+        this.positiony = positiony;
+        this.terminal = terminal;
+        this.terminalsize = size;
+        this.steps = 0;
+        drawCharacter(positionx, positiony);
     }
 
     @Override
@@ -17,7 +36,7 @@ public class Player extends GameCharacter {
     }
 
     public void moveCharacter(String key){
-
+        
         switch(key){
             case "ArrowUp" : {
                 if(positiony > 0) {
